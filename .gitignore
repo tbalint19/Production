@@ -1,0 +1,9 @@
+node_modules
+_Environment
+__pycache__
+migrations
+config.json
+app.js
+vendors.js
+
+db.sqlite3
