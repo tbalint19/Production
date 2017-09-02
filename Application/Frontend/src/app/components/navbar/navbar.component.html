@@ -1,0 +1,18 @@
+<nav *ngIf="showNavBar" class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-content">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Bling-tag</a>
+     </div>
+     <div class="navbar-header navbar-right">
+       <button *ngIf="shouldShowLogout()" type="button" class="btn btn-default navbar-btn" (click)="logout()">
+         Logout
+       </button>
+       <button *ngIf="shouldShowLogin()" type="button" class="btn btn-default navbar-btn" (click)="login()">
+         Login
+       </button>
+       <button *ngIf="shouldShowUpgrade()" type="button" class="btn btn-default navbar-btn" (click)="upgrade()">
+         Upgrade
+       </button>
+     </div>
+  </div>
+</nav>
