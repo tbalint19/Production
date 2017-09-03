@@ -1,60 +1,87 @@
 <div class="container">
-  <div class="row" *ngIf="infoMessage">
-    <p class="info-message-{{infoMessage.severity}}">{{ infoMessage.text }}</p>
-  </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-6 col-lg-6 block-container">
-      <h4 class="title no-mobile">About us</h4>
-      <div class="row no-mobile card intro-text">
-        <h4>Why us?</h4>
-        <p>Ever wondered how much hookers your IBM shares worth?</p>
-        <p>Search no more! We tell you...</p>
-        <h4 class="with-margin">How?</h4>
-        <p>Get your free trial without registration!</p>
-        <p>Registrate later for more commodities</p>
-        <p>Upgrade your profile for more firms.</p>
-      </div>
-      <div class="row free-button-container">
-        <button class="btn btn-info" (click)="getHome()">
-          Free trial
-          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-        </button>
+    <div class="col-xs-12 col-sm-7 col-sm-7 col-lg-7 block-container">
+      <div class="info-container">
+        <h3>The Player vs Player football betting site</h3>
+        <h5>The Problem</h5>
+        <li>
+          The bookmakers have one
+          income - and one income only - the
+          money they take of away from
+          their players. From you.
+        </li>
+        <li>
+          They are in controll. They create oddses,
+          they make the rules - of course they make it
+          so that you - the mass of players - lose.
+        </li>
+        <li>
+          20 billion euros each year - and it is getting higher.
+          That is the amount, that they take away from you - and this is the
+          amount that we give back to you. <a>Read more about the market...</a>
+        </li>
+        <h5>Our Innovation</h5>
+        <li>
+          We have created a platform, where you can exclude the bookmakers
+          from the market, and play against each other.
+        </li>
+        <li>
+          Instead of the lottery-like approach of the original sport betting
+          we have created a poker-like redistribution.
+        </li>
+        <li>
+          Instead of the lottery-like approach of the original sport betting
+          we have created a poker-like redistribution.
+        </li>
+        <h5>How does it work?</h5>
+        <li>The PvP betting site</li>
+        <li>The PvP betting site</li>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-sm-6 col-lg-6 block-container">
-      <h4 class="title">Create your account in seconds</h4>
-      <div class="row input-container">
-        <input class="form-control login-input" placeholder="Username" [(ngModel)]="user.username"/>
-        <p class="input-help">
-          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-          Min. 6 characters
-        </p>
-      </div>
-      <div class="row input-container">
-        <input class="form-control login-input" type="password" placeholder="Password" [(ngModel)]="user.password"/>
-        <p class="input-help">
-          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-          Min. 10 characters
-        </p>
-      </div>
-      <div class="row button-container">
-        <button class="btn btn-primary" (click)="requestLogin()" [disabled]="disabledLogin()">
-          Login
-          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="row input-container">
-        <input class="form-control login-input" type="password" placeholder="Password again" [(ngModel)]="user.passwordAgain"/>
-        <p class="input-help">
-          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-          Should match password
-        </p>
-      </div>
-      <div class="row button-container">
-        <button class="btn btn-info" (click)="requestSignup()" [disabled]="disabledSignup()">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          Signup
-        </button>
+    <div class="col-xs-12 col-sm-5 col-sm-5 col-lg-5 block-container">
+      <div class="card">
+        <h4 class="title">Create your account in seconds</h4>
+        <div class="row input-container">
+          <input class="form-control login-input" placeholder="Username" [(ngModel)]="user.username"/>
+          <p class="input-help">
+            Min. 6 characters
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </p>
+        </div>
+        <div class="row input-container">
+          <input class="form-control login-input" type="password" placeholder="Email address" [(ngModel)]="user.password"/>
+          <p class="input-help">
+            Enter a valid email
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </p>
+        </div>
+        <div class="row input-container">
+          <input class="form-control login-input" type="password" placeholder="Password" [(ngModel)]="user.password"/>
+          <p class="input-help">
+            Min. 10 characters
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </p>
+        </div>
+        <div class="row input-container">
+          <input class="form-control login-input" type="password" placeholder="Password again" [(ngModel)]="user.passwordAgain"/>
+          <p class="input-help">
+            Should match password
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </p>
+        </div>
+        <div class="row input-container">
+          <input class="form-control login-input" type="password" placeholder="Invitation code" [(ngModel)]="user.passwordAgain"/>
+          <p class="input-help">
+            Optional
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </p>
+        </div>
+        <div class="row button-container">
+          <button class="btn btn-primary" (click)="requestSignup()" [disabled]="disabledSignup()">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Signup
+          </button>
+        </div>
       </div>
 
     </div>

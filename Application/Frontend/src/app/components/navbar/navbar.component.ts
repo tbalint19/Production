@@ -1,7 +1,6 @@
+import { GlobalEventsManager } from '../../_eventsmanager/global.eventsmanager';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalEventsManager } from '../../_eventsmanager/global.eventsmanager';
-import { UserService } from '../../_services/_index';
 
 @Component({
     moduleId: module.id,
@@ -11,50 +10,27 @@ import { UserService } from '../../_services/_index';
 })
 export class NavBarComponent {
 
-    public showNavBar = false;
+    public showNavBar = true;
 
     constructor(
         private router: Router,
-        private globalEventsManager: GlobalEventsManager,
-        private userService: UserService
+        private globalEventsManager: GlobalEventsManager
       ) {
           this.globalEventsManager.showNavBarEmitter.subscribe((mode) => {
               if (mode !== null) { this.showNavBar = mode; }
       });
     }
 
-    upgrade(){
-        alert("Payment should come here");
-    }
-
-    login(){
-        this.router.navigate(['login']);
-    }
-
     logout(){
-        localStorage.removeItem("auth-token");
-        localStorage.removeItem("user");
-        this.router.navigate(['login']);
+
     }
 
     shouldShowLogout(){
-        if (localStorage.user) {
-          return JSON.parse(localStorage.user)["user"] ? true : false;
-        } else {
-          return false;
-        }
-    }
 
-    shouldShowUpgrade(){
-        if (localStorage.user) {
-            return (JSON.parse(localStorage.user)["is_paid"] === false);
-        } else {
-            return false;
-        }
     }
 
     shouldShowLogin(){
-        return !this.shouldShowLogout() && this.router.url !== '/login';
+        return this.router.url !== '/login';
     }
 
 }
