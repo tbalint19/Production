@@ -26,11 +26,7 @@ import {
   HomeComponent
 } from './components/_index'
 import {
-    UserService,
-    FirmService,
-    CommodityService,
-    MailService,
-    UnitService
+    UserService
 } from './_services/_index';
 
 @NgModule({
@@ -59,11 +55,7 @@ import {
         AuthGuard,
         GlobalEventsManager,
         HttpClient,
-        UserService,
-        FirmService,
-        CommodityService,
-        MailService,
-        UnitService
+        UserService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]

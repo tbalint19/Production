@@ -3,7 +3,6 @@ import {HttpClient} from '../_httpclient/httpclient';
 import {Router} from '@angular/router';
 import {User} from '../_models/_index';
 import {Observable} from 'rxjs/Observable';
-import { DefaultResponse } from '../_models/_index';
 
 @Injectable()
 export class UserService {
@@ -15,12 +14,12 @@ export class UserService {
         return this.client.get('/api/profile/details');
     }
 
-    public signupUser(user: User): Observable<DefaultResponse> {
-        return this.client.post('/api/profile/signup', user)
-    }
-
-    public loginUser(user: User): Observable<DefaultResponse> {
-        return this.client.post('/api/profile/login', user)
-    }
+    // public signupUser(user: User): Observable<Any> {
+    //     return this.client.post('/api/profile/signup', user)
+    // }
+    //
+    // public loginUser(user: User): Observable<any> {
+    //     return this.client.post('/api/profile/login', user)
+    // }
 
 }
