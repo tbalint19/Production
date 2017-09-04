@@ -17,7 +17,6 @@ import {
   Message
 } from 'primeng/primeng';
 import { DomSanitizer } from '@angular/platform-browser';
-import { GlobalEventsManager } from './_eventsmanager/global.eventsmanager';
 import { HttpClient } from './_httpclient/httpclient';
 import { AppComponent } from './app.component';
 import {
@@ -53,7 +52,6 @@ import {
     ],
     providers: [
         AuthGuard,
-        GlobalEventsManager,
         HttpClient,
         UserService
     ],

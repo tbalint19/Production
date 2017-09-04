@@ -20,7 +20,7 @@ def signup_user(request):
     if profile is not None:
         controller = EmailController()
         controller.send_confirm_email(profile.user.username, profile.user.email, profile.confirmation_code)
-    return {'is_successful': profile is not None}
+    return {'isSuccessful': profile is not None}
 
 
 @API.endpoint(LoginRequest)
@@ -34,4 +34,4 @@ def login_user(request):
 
 @API.endpoint(ConfirmRequest)
 def confirm_profile(request):
-    return {'is_successful': request.user.profile.confirm_profile(request.confirmation_code)}
+    return {'isSuccessful': request.user.profile.confirm_profile(request.confirmation_code)}

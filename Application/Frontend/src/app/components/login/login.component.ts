@@ -1,7 +1,7 @@
-import { GlobalEventsManager } from '../../_eventsmanager/global.eventsmanager';
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
-import { User } from '../../_models/_index';
+import { UserService } from '../../_services/_index'
+import { SignupUser, DefaultResponse, CheckResponse, TokenResponse } from '../../_models/_index';
 
 @Component({
     moduleId: module.id,
@@ -10,17 +10,9 @@ import { User } from '../../_models/_index';
 })
 export class LoginComponent{
 
-    public user: User;
+    public signupUser: SignupUser = new SignupUser();
 
-    constructor(
-          private eventsManager: GlobalEventsManager,
-          private router: Router,
-    ){
-          this.eventsManager.showNavBar(true);
-    }
-
-    requestLogin(){
-
+    constructor(private router: Router){
     }
 
     requestSignup(){
@@ -28,11 +20,11 @@ export class LoginComponent{
     }
 
     disabledSignup(){
-      return !this.user.username || !this.user.password || !(this.user.username.length > 5)|| !(this.user.password.length > 9) || this.user.password != this.user.passwordAgain;
+      // return !this.user.username || !this.user.password || !(this.user.username.length > 5)|| !(this.user.password.length > 9) || this.user.password != this.user.passwordAgain;
     }
 
     disabledLogin(){
-       return !this.user.username || !this.user.password || !(this.user.username.length > 5)|| !(this.user.password.length > 9);
+      //  return !this.user.username || !this.user.password || !(this.user.username.length > 5)|| !(this.user.password.length > 9);
     }
 
 }

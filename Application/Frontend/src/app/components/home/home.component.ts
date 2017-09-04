@@ -1,4 +1,3 @@
-import { GlobalEventsManager } from '../../_eventsmanager/global.eventsmanager';
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 
@@ -9,10 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent{
 
-    constructor(
-          private eventsManager: GlobalEventsManager,
-          private router: Router
-    ){
-          this.eventsManager.showNavBar(true);
+    constructor(private router: Router){
     }
+
 }

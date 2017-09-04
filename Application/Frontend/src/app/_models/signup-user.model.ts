@@ -1,9 +1,9 @@
-export class User {
+export class SignupUser {
 
-  id: string;
   username: string;
   email: string;
   password: string;
   passwordAgain: string;
+  invitationCode: string;
 
 }

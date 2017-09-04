@@ -1,6 +1,6 @@
-import { GlobalEventsManager } from '../../_eventsmanager/global.eventsmanager';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginUser } from '../../_models/_index';
 
 @Component({
     moduleId: module.id,
@@ -10,15 +10,9 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent {
 
-    public showNavBar = true;
+    public loginUser: LoginUser = new LoginUser();
 
-    constructor(
-        private router: Router,
-        private globalEventsManager: GlobalEventsManager
-      ) {
-          this.globalEventsManager.showNavBarEmitter.subscribe((mode) => {
-              if (mode !== null) { this.showNavBar = mode; }
-      });
+    constructor(private router: Router) {          
     }
 
     logout(){

@@ -53,7 +53,6 @@ class ConfirmRequest(CustomPostRequestForPublic):
     def __init__(self, request):
         super().__init__()
         try:
-            self.username = json.loads(request.body.decode('utf-8'))["username"]
-            self.confirmation_code = json.loads(request.body.decode('utf-8'))["confirmation_code"]
+            self.confirmation_code = json.loads(request.body.decode('utf-8'))["confirmationCode"]
         except:
             self.is_valid = False

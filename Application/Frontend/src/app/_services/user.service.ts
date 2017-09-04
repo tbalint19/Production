@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '../_httpclient/httpclient';
 import {Router} from '@angular/router';
-import {User} from '../_models/_index';
 import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '../_httpclient/httpclient';
+import { SignupUser, LoginUser, DefaultResponse, TokenResponse, CheckResponse, ConfirmUser } from '../_models/_index';
 
 @Injectable()
 export class UserService {
@@ -10,16 +10,24 @@ export class UserService {
     constructor(private client: HttpClient, private router: Router) {
     }
 
-    public getUser(): Observable<User> {
-        return this.client.get('/api/profile/details');
+    public checkUsername(user: SignupUser): Observable<CheckResponse> {
+        return this.client.get('/api/profile/checkusername?username=' + user.username);
     }
 
-    // public signupUser(user: User): Observable<Any> {
-    //     return this.client.post('/api/profile/signup', user)
-    // }
-    //
-    // public loginUser(user: User): Observable<any> {
-    //     return this.client.post('/api/profile/login', user)
-    // }
+    public checkEmail(user: SignupUser): Observable<CheckResponse> {
+        return this.client.get('/api/profile/checkemail?email=' + user.email);
+    }
+
+    public signupUser(user: SignupUser): Observable<DefaultResponse> {
+        return this.client.post('/api/profile/signup', user);
+    }
+
+    public loginUser(user: LoginUser): Observable<TokenResponse> {
+        return this.client.post('/api/profile/login', user);
+    }
+
+    public confirmUser(user: ConfirmUser): Observable<DefaultResponse> {
+        return this.client.post('/api/profile/confirm', user);
+    }
 
 }
