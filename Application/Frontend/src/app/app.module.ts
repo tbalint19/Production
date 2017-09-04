@@ -21,7 +21,7 @@ import { HttpClient } from './_httpclient/httpclient';
 import { AppComponent } from './app.component';
 import {
   NavBarComponent,
-  LoginComponent,
+  SignupComponent,
   HomeComponent
 } from './components/_index'
 import {
@@ -47,7 +47,7 @@ import {
     declarations: [
         AppComponent,
         NavBarComponent,
-        LoginComponent,
+        SignupComponent,
         HomeComponent
     ],
     providers: [

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '../_httpclient/httpclient';
-import { SignupUser, LoginUser, DefaultResponse, TokenResponse, CheckResponse, ConfirmUser } from '../_models/_index';
+import { SignupUser, LoginUser, DefaultResponse, TokenResponse, CheckResponse, ConfirmRequest } from '../_models/_index';
 
 @Injectable()
 export class UserService {
@@ -26,8 +26,8 @@ export class UserService {
         return this.client.post('/api/profile/login', user);
     }
 
-    public confirmUser(user: ConfirmUser): Observable<DefaultResponse> {
-        return this.client.post('/api/profile/confirm', user);
+    public confirmUser(request: ConfirmRequest): Observable<DefaultResponse> {
+        return this.client.post('/api/profile/confirm', request);
     }
 
 }
