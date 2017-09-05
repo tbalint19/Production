@@ -22,6 +22,9 @@ import { AppComponent } from './app.component';
 import {
   NavBarComponent,
   SignupComponent,
+  SignupUsernameInputComponent,
+  SignupEmailInputComponent,
+  SignupPasswordInputComponent,
   HomeComponent
 } from './components/_index'
 import {
@@ -48,6 +51,9 @@ import {
         AppComponent,
         NavBarComponent,
         SignupComponent,
+        SignupUsernameInputComponent,
+        SignupEmailInputComponent,
+        SignupPasswordInputComponent,
         HomeComponent
     ],
     providers: [

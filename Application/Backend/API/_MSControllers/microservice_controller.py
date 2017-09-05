@@ -1,8 +1,9 @@
 import requests
+from _Serializer.serializer import Serializer as S
 
 class MicroserviceController:
     def __init__(self):
-        self.service_url = "localhost:8000"
+        self.service_url = "http://localhost:8000"
 
     def get(self, path, params):
         url = self.build_url(path, params)
@@ -12,7 +13,8 @@ class MicroserviceController:
 
     def post(self, path, data):
         url = self.service_url + path
-        response = requests.post(url, json=data)
+        post_data = S.cleanse(data)
+        response = requests.post(url, json=post_data)
         data = response.json()
         return data
 

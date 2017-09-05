@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from _Serializer.serializer import Serializer as S
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 
 class API:
@@ -9,6 +9,8 @@ class API:
     def endpoint(CustomRequest):
         def with_middleware(view):
             def process(request):
+                if request.method == "OPTIONS":
+                    return HttpResponse(200)
                 custom_request = CustomRequest(request)
                 if custom_request.method != custom_request.expected_method:
                     return HttpResponse(status=404)

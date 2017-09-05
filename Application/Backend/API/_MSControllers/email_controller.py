@@ -2,7 +2,7 @@ from _MSControllers.microservice_controller import MicroserviceController
 
 class EmailController(MicroserviceController):
     def __init__(self):
-        self.service_url = "localhost:3000"
+        self.service_url = "http://localhost:3000"
 
     def send_confirm_email(self, username, email, confirmation_code):
         path = "/confirmation"

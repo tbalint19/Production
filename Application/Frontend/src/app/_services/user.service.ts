@@ -10,12 +10,12 @@ export class UserService {
     constructor(private client: HttpClient, private router: Router) {
     }
 
-    public checkUsername(user: SignupUser): Observable<CheckResponse> {
-        return this.client.get('/api/profile/checkusername?username=' + user.username);
+    public checkUsername(username: string): Observable<CheckResponse> {
+        return this.client.get('/api/profile/checkusername?username=' + username);
     }
 
-    public checkEmail(user: SignupUser): Observable<CheckResponse> {
-        return this.client.get('/api/profile/checkemail?email=' + user.email);
+    public checkEmail(email: string): Observable<CheckResponse> {
+        return this.client.get('/api/profile/checkemail?email=' + email);
     }
 
     public signupUser(user: SignupUser): Observable<DefaultResponse> {

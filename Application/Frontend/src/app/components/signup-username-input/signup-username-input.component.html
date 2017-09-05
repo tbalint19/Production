@@ -1,0 +1,29 @@
+<div class="row input-container">
+
+  <input
+    class="form-control login-input"
+    placeholder="Username"
+    [(ngModel)]="user.username"
+    (ngModelChange)="checkUsername()"/>
+
+  <p *ngIf="shouldShowInfo()" class="input-help input-help-default">
+    Min. 10 characters
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+  </p>
+
+  <p *ngIf="shouldShowLoading()" class="input-help input-help-default">
+    Checking...
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+  </p>
+
+  <p *ngIf="shouldShowError()" class="input-help input-help-error">
+    Already occupied
+    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+  </p>
+
+  <p *ngIf="shouldShowSuccess()" class="input-help input-help-success">
+    Available
+    <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+  </p>
+
+</div>

@@ -1,5 +1,5 @@
 export class CheckResponse {
 
-  isOccupied: boolean;
+  is_occupied: boolean;
 
 }

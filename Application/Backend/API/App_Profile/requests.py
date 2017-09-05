@@ -4,7 +4,7 @@ import json
 
 class UsernameCheckRequest(CustomGetRequestForPublic):
     def __init__(self, request):
-        super().__init__()
+        CustomGetRequestForPublic.__init__(self, request)
         try:
             self.username = request.GET.get("username")
         except:
@@ -12,7 +12,7 @@ class UsernameCheckRequest(CustomGetRequestForPublic):
 
 class EmailCheckRequest(CustomGetRequestForPublic):
     def __init__(self, request):
-        super().__init__()
+        CustomGetRequestForPublic.__init__(self, request)
         try:
             self.email = request.GET.get("email")
         except:
@@ -20,7 +20,7 @@ class EmailCheckRequest(CustomGetRequestForPublic):
 
 class SignupRequest(CustomPostRequestForPublic):
     def __init__(self, request):
-        super().__init__()
+        CustomPostRequestForPublic.__init__(self, request)
         try:
             self.username = json.loads(request.body.decode('utf-8'))["username"]
             self.email = json.loads(request.body.decode('utf-8'))["email"]
@@ -42,7 +42,7 @@ class SignupRequest(CustomPostRequestForPublic):
 
 class LoginRequest(CustomPostRequestForPublic):
     def __init__(self, request):
-        super().__init__()
+        CustomPostRequestForPublic.__init__(self, request)
         try:
             self.identification = json.loads(request.body.decode('utf-8'))["identification"]
             self.password = json.loads(request.body.decode('utf-8'))["password"]
@@ -51,7 +51,7 @@ class LoginRequest(CustomPostRequestForPublic):
 
 class ConfirmRequest(CustomPostRequestForPublic):
     def __init__(self, request):
-        super().__init__()
+        CustomPostRequestForPublic.__init__(self, request)
         try:
             self.confirmation_code = json.loads(request.body.decode('utf-8'))["confirmationCode"]
         except:

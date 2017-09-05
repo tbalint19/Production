@@ -7,7 +7,12 @@ export class SignupUser {
   password: string;
   passwordAgain: string;
   invitationCode: string;
-  
+
+  constructor(){
+      this.usernameIsAvailable = false;
+      this.emailIsAvailable = false;
+  }
+
 
   usernameIsValid(){
       let usernamePattern = /^([a-zA-Z0-9_-]){10,25}$/;
@@ -24,8 +29,12 @@ export class SignupUser {
       return this.password != undefined && this.password.match(passwordPattern);
   }
 
+  passwordMatches(){
+      return this.password == this.passwordAgain;
+  }
+
   dataIsValid(){
-      return this.usernameIsValid() && this.emailIsValid() && this.passwordIsValid();
+      return this.usernameIsValid() && this.emailIsValid() && this.passwordIsValid() && this.passwordMatches();
   }
 
 }

@@ -2,7 +2,7 @@ from _MSControllers.microservice_controller import MicroserviceController
 
 class AuthController(MicroserviceController):
     def __init__(self):
-        self.service_url = "localhost:5000"
+        self.service_url = "http://localhost:5000"
 
     def login(self, user_id):
         path = "/login"
@@ -13,6 +13,6 @@ class AuthController(MicroserviceController):
 
     def authenticate(self, headers):
         path = "/authenticate"
-        response = self.post(path, headers)
+        response = self.post(path, {'headers': headers})
         user_id = response['user_id']
         return user_id

@@ -24,6 +24,16 @@ class Serializer:
         return serialized
 
     @classmethod
+    def cleanse(cls, dictionary):
+        cleansed = {}
+        for key in dictionary:
+            if type(dictionary[key]) not in cls.serialized:
+                cleansed[key] = str(dictionary[key])
+            else:
+                cleansed[key] = dictionary[key]
+        return cleansed
+
+    @classmethod
     def get_key(self, field):
         return field.name if self.obj_extension not in field.name else field.name.split(self.obj_extension)[0]
 
