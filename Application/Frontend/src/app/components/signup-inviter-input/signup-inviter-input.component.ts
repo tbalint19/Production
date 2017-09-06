@@ -5,11 +5,11 @@ import { SignupUser, SignupStatus, CheckResponse } from '../../_models/_index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'signup-username-input.component.html',
-    styleUrls: ['signup-username-input.component.css'],
-    selector: 'signup-username-input'
+    templateUrl: 'signup-inviter-input.component.html',
+    styleUrls: ['signup-inviter-input.component.css'],
+    selector: 'signup-inviter-input'
 })
-export class SignupUsernameInputComponent{
+export class SignupInviterInputComponent{
 
     @Input() user: SignupUser;
     @Input() status: SignupStatus;
@@ -17,9 +17,9 @@ export class SignupUsernameInputComponent{
     constructor(private router: Router, private userService: UserService){
     }
 
-    checkUsername(){
-        if (this.user.usernameIsValid()) {
-            let observed = this.user.username;
+    checkInviter(){
+        if (this.user.inviterIsValid()) {
+            let observed = this.user.inviter;
             this.user.usernameIsAvailable = false;
             this.status.usernameIsChecked = true;
             this.userService.checkUsername(observed).subscribe(

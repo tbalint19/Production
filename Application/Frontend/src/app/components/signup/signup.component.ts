@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { UserService } from '../../_services/_index'
-import { SignupUser, DefaultResponse, CheckResponse } from '../../_models/_index';
+import { SignupUser, DefaultResponse, CheckResponse, SignupStatus } from '../../_models/_index';
 
 @Component({
     moduleId: module.id,
@@ -11,16 +11,19 @@ import { SignupUser, DefaultResponse, CheckResponse } from '../../_models/_index
 export class SignupComponent{
 
     public user: SignupUser = new SignupUser();
-    public isCheckingInviter: boolean = false;
+    public status: SignupStatus = new SignupStatus();
 
     constructor(private router: Router, private userService: UserService){
     }
 
     requestSignup(){
-        console.log(this.user);
         this.userService.signupUser(this.user).subscribe(
             (response: DefaultResponse) => console.log(response)
         )
+    }
+
+    disabledSignup(){
+        return !this.status.noCheckActive() || !this.user.dataIsValid();
     }
 
 }

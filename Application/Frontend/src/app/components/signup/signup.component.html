@@ -50,18 +50,12 @@
     <div class="col-xs-12 col-sm-5 col-sm-5 col-lg-5 block-container">
       <div class="card">
         <h4 class="title">Create your account in seconds</h4>
-        <signup-username-input [user]="user"></signup-username-input>
-        <signup-email-input [user]="user"></signup-email-input>
+        <signup-username-input [user]="user" [status]="status"></signup-username-input>
+        <signup-email-input [user]="user" [status]="status"></signup-email-input>
         <signup-password-input [user]="user"></signup-password-input>
-        <div class="row input-container">
-          <input class="form-control login-input" type="text" placeholder="Invitation code" [(ngModel)]="user.invitationCode"/>
-          <p class="input-help">
-            Optional
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-          </p>
-        </div>
+        <signup-inviter-input [user]="user" [status]="status"></signup-inviter-input>        
         <div class="row button-container">
-          <button class="btn btn-primary" (click)="requestSignup()" [disabled]="!this.user.dataIsValid()">
+          <button class="btn btn-primary" (click)="requestSignup()" [disabled]="disabledSignup()">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             Signup
           </button>

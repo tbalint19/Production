@@ -4,3 +4,4 @@ export * from './signup-user.model';
 export * from './login-user.model';
 export * from './token-response.model';
 export * from './confirm-request.model';
+export * from './signup-status.model';

@@ -14,7 +14,6 @@ export class SignupUser {
       this.emailIsAvailable = false;
   }
 
-
   usernameIsValid(){
       let usernamePattern = /^([a-zA-Z0-9_-]){10,25}$/;
       return this.username != undefined && this.username.match(usernamePattern);
@@ -23,6 +22,12 @@ export class SignupUser {
   emailIsValid(){
       let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return this.email != undefined && this.email.match(emailPattern);
+  }
+
+  inviterIsValid(){
+    let usernamePattern = /^([a-zA-Z0-9_-]){10,25}$/;
+    let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return this.inviter != undefined && (this.username.match(usernamePattern) || this.email.match(emailPattern));
   }
 
   passwordIsValid(){
@@ -35,7 +40,14 @@ export class SignupUser {
   }
 
   dataIsValid(){
-      return this.usernameIsValid() && this.emailIsValid() && this.passwordIsValid() && this.passwordMatches();
+      return (
+          this.usernameIsValid() &&
+          this.emailIsValid() &&
+          this.passwordIsValid() &&
+          this.passwordMatches() &&
+          this.usernameIsAvailable &&
+          this.emailIsAvailable
+      );
   }
 
 }

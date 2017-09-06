@@ -18,6 +18,10 @@ export class UserService {
         return this.client.get('/api/profile/checkemail?email=' + email);
     }
 
+    public checkInviter(inviter: string): Observable<CheckResponse> {
+        return this.client.get('/api/profile/checkemail?inviter=' + inviter);
+    }
+
     public signupUser(user: SignupUser): Observable<DefaultResponse> {
         return this.client.post('/api/profile/signup', user);
     }

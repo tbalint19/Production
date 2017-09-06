@@ -2,12 +2,12 @@
 
   <input
     class="form-control login-input"
-    placeholder="Username"
-    [(ngModel)]="user.username"
-    (ngModelChange)="checkUsername()"/>
+    placeholder="Inviter"
+    [(ngModel)]="user.inviter"
+    (ngModelChange)="checkInviter()"/>
 
   <p *ngIf="shouldShowInfo()" class="input-help input-help-default">
-    Min. 10 characters - letters (and numbers)
+    Optional - username or email
     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
   </p>
 
@@ -16,8 +16,8 @@
     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
   </p>
 
-  <p *ngIf="shouldShowError()" class="input-help input-help-error">
-    Already occupied
+  <p *ngIf="shouldShowError()" class="input-help input-help-default">
+    Not found
     <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
   </p>
 

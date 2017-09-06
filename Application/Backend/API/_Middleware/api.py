@@ -2,6 +2,7 @@ from django.contrib.auth.models import AnonymousUser
 from _Serializer.serializer import Serializer as S
 from django.http import JsonResponse, HttpResponse
 import json
+import time
 
 class API:
 
@@ -18,6 +19,7 @@ class API:
                     return HttpResponse(status=403)
                 if custom_request.aud == "USER" and custom_request.user == AnonymousUser():
                     return HttpResponse(status=401)
+                time.sleep(2)
                 return JsonResponse(S.serialize(view(custom_request)))
             return process
         return with_middleware
