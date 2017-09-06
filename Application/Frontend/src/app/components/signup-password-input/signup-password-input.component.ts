@@ -11,24 +11,50 @@ import { SignupUser, CheckResponse } from '../../_models/_index';
 export class SignupPasswordInputComponent{
 
     @Input() user: SignupUser;
-    private shouldShowError: boolean = false;
+    private shouldShowErrorPassword: boolean = false;
+    private shouldShowErrorPasswordAgain: boolean = false;
 
     constructor(private router: Router){
     }
 
-    onBlur(){
-        this.shouldShowError = !this.user.passwordIsValid();
+    onBlurPassword(){
+        this.shouldShowErrorPassword = !this.user.passwordIsValid();
     }
 
-    onFocus(){
-        this.shouldShowError = false;
+    onFocusPassword(){
+        this.shouldShowErrorPassword = false;
     }
 
-    shouldShowInfo(){
-        return !this.user.passwordIsValid() && !this.shouldShowError;
+    shouldShowInfoPassword(){
+        return !this.user.passwordIsValid() && !this.shouldShowErrorPassword;
     }
 
-    shouldShowSuccess(){
+    shouldShowSuccessPassword(){
         return this.user.passwordIsValid();
     }
+
+    onBlurPasswordAgain(){
+        this.shouldShowErrorPasswordAgain = !(this.user.password == this.user.passwordAgain) && !this.shouldShowBasicPasswordAgain();
+    }
+
+    onFocusPasswordAgain(){
+        this.shouldShowErrorPasswordAgain = false;
+    }
+
+    shouldShowBasicPasswordAgain(){
+        return !this.user.passwordIsValid();
+    }
+
+    shouldShowInfoPasswordAgain(){
+        return !this.shouldShowSuccessPasswordAgain() && !this.shouldShowErrorPasswordAgain && !this.shouldShowBasicPasswordAgain();
+    }
+
+    shouldShowSuccessPasswordAgain(){
+        return this.user.password == this.user.passwordAgain && this.user.passwordIsValid();
+    }
+
+    shouldShow(){
+        return this.shouldShowErrorPasswordAgain && !this.shouldShowBasicPasswordAgain();
+    }
+
 }
