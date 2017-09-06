@@ -22,7 +22,7 @@ export class SignupEmailInputComponent{
             let observed = this.user.email;
             this.user.emailIsAvailable = false;
             this.isChecking = true;
-            this.userService.checkUsername(observed).subscribe(
+            this.userService.checkEmail(observed).subscribe(
               (response: CheckResponse) => {
                 if (observed == this.user.email) {
                   this.user.emailIsAvailable = !response.is_occupied;
