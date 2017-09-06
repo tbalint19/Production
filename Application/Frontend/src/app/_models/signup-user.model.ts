@@ -6,9 +6,10 @@ export class SignupUser {
   emailIsAvailable: boolean;
   password: string;
   passwordAgain: string;
-  invitationCode: string;
+  inviter: string;
 
   constructor(){
+      this.inviter = null;
       this.usernameIsAvailable = false;
       this.emailIsAvailable = false;
   }

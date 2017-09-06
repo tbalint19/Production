@@ -17,6 +17,7 @@ export class SignupComponent{
     }
 
     requestSignup(){
+        console.log(this.user);
         this.userService.signupUser(this.user).subscribe(
             (response: DefaultResponse) => console.log(response)
         )

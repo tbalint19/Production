@@ -1,5 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+import random
+import string
 
 class ProfileManager(models.Manager):
 
@@ -11,8 +13,8 @@ class ProfileManager(models.Manager):
         return profile
 
     @staticmethod
-    def generate_confirmation_code(self):
-        confirmation_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=20))
+    def generate_confirmation_code():
+        confirmation_code = ''.join(random.sample(string.ascii_uppercase + string.digits, k=20))
         return confirmation_code
 
 class Profile(models.Model):

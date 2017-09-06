@@ -26,19 +26,19 @@ class SignupRequest(CustomPostRequestForPublic):
             self.email = json.loads(request.body.decode('utf-8'))["email"]
             self.password = json.loads(request.body.decode('utf-8'))["password"]
             self.inviter = json.loads(request.body.decode('utf-8'))["inviter"]
-            self.is_valid = self.validate(request)
+            self.is_valid = self.validate()
         except:
             self.is_valid = False
 
     def validate(self):
-        return not (
-            Profile.objects.filter(user_obj__username=self.username).exists() or
-            Profile.object.filter(user_obj__email=self.email).exists()
-        ) and (
+        username_available = not Profile.objects.filter(user_obj__username=self.username).exists()
+        email_available = not Profile.objects.filter(user_obj__email=self.email).exists()
+        valid = (
             len(self.username) > 5 and
             len(self.email) > 5 and
             len(self.password) > 9
         )
+        return username_available and email_available and valid
 
 class LoginRequest(CustomPostRequestForPublic):
     def __init__(self, request):

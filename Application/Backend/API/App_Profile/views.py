@@ -19,7 +19,7 @@ def signup_user(request):
     profile = Profile.objects.create_profile(request.username, request.email, request.password)
     if profile is not None:
         controller = EmailController()
-        controller.send_confirm_email(profile.user.username, profile.user.email, profile.confirmation_code)
+        controller.send_confirm_email(profile.user_obj.username, profile.user_obj.email, profile.confirmation_code)
     return {'isSuccessful': profile is not None}
 
 
