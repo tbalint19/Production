@@ -14,6 +14,16 @@ export class SignupUser {
       this.emailIsAvailable = false;
   }
 
+  reset(){
+    this.username = null;
+    this.email = null;
+    this.password = null;
+    this.passwordAgain = null;
+    this.inviter = null;
+    this.usernameIsAvailable = false;
+    this.emailIsAvailable = false;
+  }
+
   usernameIsValid(){
       let usernamePattern = /^([a-zA-Z0-9_-]){10,25}$/;
       return this.username != undefined && this.username.match(usernamePattern);
