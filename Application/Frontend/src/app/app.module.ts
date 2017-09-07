@@ -26,6 +26,7 @@ import {
   SignupEmailInputComponent,
   SignupPasswordInputComponent,
   SignupInviterInputComponent,
+  MessagesComponent,
   HomeComponent
 } from './components/_index'
 import {
@@ -56,6 +57,7 @@ import {
         SignupEmailInputComponent,
         SignupPasswordInputComponent,
         SignupInviterInputComponent,
+        MessagesComponent,
         HomeComponent
     ],
     providers: [
