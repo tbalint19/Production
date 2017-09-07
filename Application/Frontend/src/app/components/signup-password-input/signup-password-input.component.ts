@@ -26,11 +26,15 @@ export class SignupPasswordInputComponent{
     }
 
     shouldShowInfoPassword(){
-        return !this.user.passwordIsValid() && !this.shouldShowErrorPassword;
+        return !this.user.passwordIsValid() && !this.shouldBeRed();
     }
 
     shouldShowSuccessPassword(){
         return this.user.passwordIsValid();
+    }
+
+    shouldBeRed(){
+        return this.shouldShowErrorPassword && this.user.usernameIsValid() && this.user.emailIsValid();
     }
 
     onBlurPasswordAgain(){

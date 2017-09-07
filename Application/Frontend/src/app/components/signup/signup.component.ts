@@ -17,26 +17,4 @@ export class SignupComponent{
     constructor(private router: Router, private userService: UserService){
     }
 
-    requestSignup(){
-        this.status.pendingSignup = true;
-        this.userService.signupUser(this.user).subscribe(
-            (response: DefaultResponse) => {
-                this.status.pendingSignup = false;
-                if (response.is_successful) {
-                    this.messages.push(new Message(
-                        "success",
-                        "Successful signup!",
-                        "Welcome to our site " + this.user.username + "!"
-                    ));
-                    this.status = new SignupStatus();
-                    this.user = new SignupUser();
-                }
-            }
-        )
-    }
-
-    disabledSignup(){
-        return !this.status.noCheckActive() || !this.user.dataIsValid() || this.status.pendingSignup;
-    }
-
 }
