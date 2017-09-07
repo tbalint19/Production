@@ -14,6 +14,11 @@ def check_email(request):
     return {'is_occupied': Profile.objects.filter(user_obj__email=request.email).exists()}
 
 
+@API.endpoint(InviterCheckRequest)
+def check_inviter(request):
+    return {'is_occupied': Profile.objects.find_user_by_credential(request.credential) is not None}
+
+
 @API.endpoint(SignupRequest)
 def signup_user(request):
     profile = Profile.objects.create_profile(request.username, request.email, request.password)

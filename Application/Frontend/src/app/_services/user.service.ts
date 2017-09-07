@@ -19,7 +19,7 @@ export class UserService {
     }
 
     public checkInviter(inviter: string): Observable<CheckResponse> {
-        return this.client.get('/api/profile/checkemail?inviter=' + inviter);
+        return this.client.get('/api/profile/checkinviter?inviter=' + inviter);
     }
 
     public signupUser(user: SignupUser): Observable<DefaultResponse> {

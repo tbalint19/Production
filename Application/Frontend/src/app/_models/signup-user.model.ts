@@ -27,7 +27,7 @@ export class SignupUser {
   inviterIsValid(){
     let usernamePattern = /^([a-zA-Z0-9_-]){10,25}$/;
     let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return this.inviter != undefined && (this.username.match(usernamePattern) || this.email.match(emailPattern));
+    return this.inviter != undefined && (this.inviter.match(usernamePattern) || this.inviter.match(emailPattern));
   }
 
   passwordIsValid(){

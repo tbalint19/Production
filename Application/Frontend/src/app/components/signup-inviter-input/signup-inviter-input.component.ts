@@ -20,32 +20,32 @@ export class SignupInviterInputComponent{
     checkInviter(){
         if (this.user.inviterIsValid()) {
             let observed = this.user.inviter;
-            this.user.usernameIsAvailable = false;
-            this.status.usernameIsChecked = true;
-            this.userService.checkUsername(observed).subscribe(
+            this.status.inviterIsFound = false;
+            this.status.inviterIsChecked = true;
+            this.userService.checkInviter(observed).subscribe(
               (response: CheckResponse) => {
-                if (observed == this.user.username) {
-                  this.user.usernameIsAvailable = !response.is_occupied;
-                  this.status.usernameIsChecked = false;
+                if (observed == this.user.inviter) {
+                  this.status.inviterIsFound = response.is_occupied;
+                  this.status.inviterIsChecked = false;
                 }
               }
             )
-        } else { this.status.usernameIsChecked = false; }
+        } else { this.status.inviterIsChecked = false; }
     }
 
     shouldShowInfo(){
-        return !this.user.username || this.user.username && !this.user.usernameIsValid();
+        return !this.user.inviter || this.user.inviter && !this.user.inviterIsValid();
     }
 
     shouldShowLoading(){
-        return this.status.usernameIsChecked;
+        return this.status.inviterIsChecked;
     }
 
     shouldShowError(){
-        return !this.user.usernameIsAvailable && !this.status.usernameIsChecked  && this.user.usernameIsValid();
+        return !this.status.inviterIsFound && !this.status.inviterIsChecked  && this.user.inviterIsValid();
     }
 
     shouldShowSuccess(){
-        return this.user.usernameIsAvailable && this.user.usernameIsValid();
+        return this.status.inviterIsFound && this.user.inviterIsValid();
     }
 }

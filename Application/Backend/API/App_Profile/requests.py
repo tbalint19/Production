@@ -18,6 +18,15 @@ class EmailCheckRequest(CustomGetRequestForPublic):
         except:
             self.is_valid = False
 
+class InviterCheckRequest(CustomGetRequestForPublic):
+    def __init__(self, request):
+        CustomGetRequestForPublic.__init__(self, request)
+        try:
+            self.credential = request.GET.get("inviter")
+        except:
+            self.is_valid = False
+
+
 class SignupRequest(CustomPostRequestForPublic):
     def __init__(self, request):
         CustomPostRequestForPublic.__init__(self, request)
