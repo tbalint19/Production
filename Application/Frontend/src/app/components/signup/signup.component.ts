@@ -17,8 +17,15 @@ export class SignupComponent{
     }
 
     requestSignup(){
+        this.status.pendingSignup = true;
         this.userService.signupUser(this.user).subscribe(
-            (response: DefaultResponse) => console.log(response)
+            (response: DefaultResponse) => {
+                this.status.pendingSignup = false;
+                if (response.is_successful) {
+                    this.status = new SignupStatus();
+                    this.user = new SignupUser();
+                }
+            }
         )
     }
 
