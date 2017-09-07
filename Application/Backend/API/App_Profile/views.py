@@ -11,7 +11,7 @@ def check_username(request):
 
 @API.endpoint(EmailCheckRequest)
 def check_email(request):
-    return {'is_occupied': Profile.objects.filter(user_obj__email=request.email).exists()}
+    return {'is_occupied': Profile.objects.filter(user_obj__email=request.email.lower()).exists()}
 
 
 @API.endpoint(InviterCheckRequest)
@@ -21,7 +21,7 @@ def check_inviter(request):
 
 @API.endpoint(SignupRequest)
 def signup_user(request):
-    profile = Profile.objects.create_profile(request.username.lower(), request.email, request.password)
+    profile = Profile.objects.create_profile(request.username, request.email, request.password, request.inviter)
     if profile is not None:
         controller = EmailController()
         controller.send_confirm_email(profile.user_obj.username, profile.user_obj.email, profile.confirmation_code)

@@ -5,10 +5,21 @@ import string
 
 class ProfileManager(models.Manager):
 
-    def create_profile(self, username, email, password):
-        user = User.objects.create_user(username=username, email=email, password=password)
+    def get_profile_or_none_by_username(self, username):
+        if username:
+            try:
+                return self.get(user_obj__username=username.lower())
+            except Profile.DoesNotExist:
+                return None
+        return None
+
+    def create_profile(self, username, email, password, inviter):
+        user = User.objects.create_user(username=username.lower(), email=email.lower(), password=password)
         profile = Profile(user_obj=user)
         profile.confirmation_code = ProfileManager.generate_confirmation_code()
+        inviter_obj = self.get_profile_or_none_by_username(inviter)
+        if inviter_obj:
+            profile.inviter = inviter_obj
         profile.save()
         return profile
 
@@ -25,6 +36,7 @@ class Profile(models.Model):
     monthly_points = models.IntegerField(default=0)
     is_confirmed = models.BooleanField(default=False)
     confirmation_code = models.CharField(max_length=25, default=None, blank=True, null=True)
+    inviter = models.ForeignKey('self', null=True, default=None, blank=True)
 
     objects = ProfileManager()
 
