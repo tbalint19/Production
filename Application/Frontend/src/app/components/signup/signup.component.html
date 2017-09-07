@@ -50,15 +50,21 @@
 
     <div class="col-xs-12 col-sm-5 col-sm-5 col-lg-5 block-container">
       <div class="card">
-        <h4 class="title">Create your account in seconds</h4>
+        <h4 *ngIf="status.pendingSignup" class="title">Create your account in seconds</h4>
+        <h4 *ngIf="!status.pendingSignup" class="title">
+          We create an account for you...
+        </h4>
         <signup-username-input [user]="user" [status]="status"></signup-username-input>
         <signup-email-input [user]="user" [status]="status"></signup-email-input>
         <signup-password-input [user]="user"></signup-password-input>
         <signup-inviter-input [user]="user" [status]="status"></signup-inviter-input>
         <div class="row button-container">
-          <button class="btn btn-primary" (click)="requestSignup()" [disabled]="disabledSignup()">
+          <button class="btn btn-primary" (click)="requestSignup()" [disabled]="disabledSignup()"  *ngIf="!status.pendingSignup">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             Signup
+          </button>
+          <button class="btn btn-primary"  *ngIf="status.pendingSignup" disabled="true">
+            <i class="material-icons md-15 loading-circle">data_usage</i>
           </button>
         </div>
       </div>

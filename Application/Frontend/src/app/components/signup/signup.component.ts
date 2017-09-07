@@ -36,7 +36,7 @@ export class SignupComponent{
     }
 
     disabledSignup(){
-        return !this.status.noCheckActive() || !this.user.dataIsValid();
+        return !this.status.noCheckActive() || !this.user.dataIsValid() || this.status.pendingSignup;
     }
 
 }
