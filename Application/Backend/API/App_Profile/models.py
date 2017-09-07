@@ -12,15 +12,6 @@ class ProfileManager(models.Manager):
         profile.save()
         return profile
 
-    def find_user_by_credential(self, credential):
-        try:
-            if "@" in credential:
-                return self.get(user_obj__email=credential)
-            else:
-                return self.get(user_obj__username=credential)
-        except Profile.DoesNotExist:
-            return None
-
     @staticmethod
     def generate_confirmation_code():
         confirmation_code = ''.join(random.sample(string.ascii_uppercase + string.digits, k=20))

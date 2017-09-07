@@ -6,7 +6,7 @@ from _Middleware import API
 
 @API.endpoint(UsernameCheckRequest)
 def check_username(request):
-    return {'is_occupied': Profile.objects.filter(user_obj__username=request.username).exists()}
+    return {'is_occupied': Profile.objects.filter(user_obj__username=request.username.lower()).exists()}
 
 
 @API.endpoint(EmailCheckRequest)
@@ -16,12 +16,12 @@ def check_email(request):
 
 @API.endpoint(InviterCheckRequest)
 def check_inviter(request):
-    return {'is_occupied': Profile.objects.find_user_by_credential(request.credential) is not None}
+    return {'is_occupied': Profile.objects.filter(user_obj__username=request.credential.lower()).exists()}
 
 
 @API.endpoint(SignupRequest)
 def signup_user(request):
-    profile = Profile.objects.create_profile(request.username, request.email, request.password)
+    profile = Profile.objects.create_profile(request.username.lower(), request.email, request.password)
     if profile is not None:
         controller = EmailController()
         controller.send_confirm_email(profile.user_obj.username, profile.user_obj.email, profile.confirmation_code)
