@@ -8,4 +8,5 @@ export * from './sherwood-intro/sherwood-intro.component';
 export * from './demo-proposer/demo-proposer.component';
 export * from './navbar/navbar.component';
 export * from './home/home.component';
+export * from './demo/demo.component';
 export * from './messages/messages.component';

@@ -30,6 +30,7 @@ import {
   SignupInviterInputComponent,
   SignupButtonComponent,
   MessagesComponent,
+  DemoComponent,
   HomeComponent
 } from './components/_index'
 import {
@@ -64,6 +65,7 @@ import {
         SignupInviterInputComponent,
         SignupButtonComponent,
         MessagesComponent,
+        DemoComponent,
         HomeComponent
     ],
     providers: [

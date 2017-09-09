@@ -12,7 +12,7 @@ export class NavBarComponent {
 
     public loginUser: LoginUser = new LoginUser();
 
-    constructor(private router: Router) {          
+    constructor(private router: Router) {
     }
 
     logout(){
@@ -21,6 +21,10 @@ export class NavBarComponent {
 
     shouldShowLogout(){
 
+    }
+
+    getHome(){
+        this.router.navigate(['']);
     }
 
     shouldShowLogin(){
