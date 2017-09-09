@@ -8,12 +8,12 @@
      </div>
      <div class="navbar-form navbar-left">
         <div *ngIf="shouldShowLogin()" class="form-group">
-          <input type="text" class="form-control" placeholder="Username or email" [(ngModel)]="loginUser.identification">
+          <input type="text" class="form-control" placeholder="Username or email" [(ngModel)]="user.identification">
         </div>
         <div *ngIf="shouldShowLogin()" class="form-group">
-          <input type="text" class="form-control" placeholder="Password" [(ngModel)]="loginUser.password">
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
         </div>
-        <button *ngIf="shouldShowLogin()" type="button" class="btn btn-default">
+        <button *ngIf="shouldShowLogin()" type="button" class="btn btn-default" (click)="requestLogin()">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           Login
         </button>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginUser } from '../../_models/_index';
+import { UserService } from '../../_services/_index';
+import { LoginUser, TokenResponse } from '../../_models/_index';
 
 @Component({
     moduleId: module.id,
@@ -10,9 +11,9 @@ import { LoginUser } from '../../_models/_index';
 })
 export class NavBarComponent {
 
-    public loginUser: LoginUser = new LoginUser();
+    public user: LoginUser = new LoginUser();
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private userService: UserService) {
     }
 
     logout(){
@@ -25,6 +26,12 @@ export class NavBarComponent {
 
     getHome(){
         this.router.navigate(['']);
+    }
+
+    requestLogin(){
+        this.userService.loginUser(this.user).subscribe(
+            (response: TokenResponse) => console.log(response)
+        )
     }
 
     shouldShowLogin(){
