@@ -28,7 +28,7 @@ export class NavBarComponent {
     }
 
     shouldShowLogin(){
-        return this.router.url !== '/login';
+        return !(localStorage.getItem('user'));
     }
 
 }
