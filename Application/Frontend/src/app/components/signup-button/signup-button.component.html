@@ -1,13 +1,13 @@
 <div class="row button-container">
   <button
-    class="btn btn-primary"
+    class="btn btn-primary signup-button"
     (click)="requestSignup()"
     [disabled]="disabledSignup()"
     *ngIf="!status.pendingSignup">
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
     Signup
   </button>
-  <button class="btn btn-primary"  *ngIf="status.pendingSignup" disabled="true">
+  <button class="btn btn-primary signup-button"  *ngIf="status.pendingSignup" disabled="true">
     <i class="material-icons md-15 loading-circle">data_usage</i>
   </button>
 </div>

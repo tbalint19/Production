@@ -1,0 +1,20 @@
+.demo-proposer-container {
+  text-align: center;
+}
+
+.text {
+  padding: 7px;
+}
+
+.demo-proposer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #5bc0de;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #5bc0de;
+}
+
+.demo-button {
+  margin-left: 50px;
+}
