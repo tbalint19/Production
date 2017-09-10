@@ -1,14 +1,30 @@
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from django.db import models
 import random
 import string
 
 class ProfileManager(models.Manager):
 
+    def get_profile_by_credential(self, identification):
+        if "@" in identification:
+            profile = self.get_profile_or_none_by_email(identification)
+        else:
+            profile = self.get_profile_or_none_by_username(identification)
+        return profile
+
     def get_profile_or_none_by_username(self, username):
         if username:
             try:
                 return self.get(user_obj__username=username.lower())
+            except Profile.DoesNotExist:
+                return None
+        return None
+
+    def get_profile_or_none_by_email(self, email):
+        if email:
+            try:
+                return self.get(user_obj__email=email.lower())
             except Profile.DoesNotExist:
                 return None
         return None
@@ -22,6 +38,13 @@ class ProfileManager(models.Manager):
             profile.inviter = inviter_obj
         profile.save()
         return profile
+
+    def authenticate_user(self, identification, password):
+        profile = self.get_profile_by_credential(identification)
+        if profile:
+            if profile.user_obj.check_password(password):
+                return profile
+        return None
 
     @staticmethod
     def generate_confirmation_code():

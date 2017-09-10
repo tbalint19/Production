@@ -30,11 +30,11 @@ def signup_user(request):
 
 @API.endpoint(LoginRequest)
 def login_user(request):
-    user = Profile.objects.authenticate_user(request, request.identification, request.password)
-    if user is not None:
+    profile = Profile.objects.authenticate_user(request.identification, request.password)
+    if profile is not None:
         controller = AuthController()
-        token = controller.login(user.id)
-    return {'token': None if user is None else token}
+        token = controller.login(profile.user_obj.id)
+    return {'token': None if profile is None else token}
 
 
 @API.endpoint(ConfirmRequest)

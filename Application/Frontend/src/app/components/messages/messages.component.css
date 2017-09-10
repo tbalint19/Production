@@ -27,6 +27,11 @@
   color: white;
 }
 
+.error {
+  background-color: #d9534f;
+  color: white;
+}
+
 .title {
   text-align: center;
   font-weight: bold;

@@ -6,16 +6,29 @@
         SherwoodBET
       </a>
      </div>
-     <div class="navbar-form navbar-left">
-        <div *ngIf="shouldShowLogin()" class="form-group">
+     <div *ngIf="shouldShowLogin()" class="navbar-form navbar-left">
+        <div class="form-group">
           <input type="text" class="form-control" placeholder="Username or email" [(ngModel)]="user.identification">
         </div>
-        <div *ngIf="shouldShowLogin()" class="form-group">
+        <div class="form-group">
           <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
         </div>
-        <button *ngIf="shouldShowLogin()" type="button" class="btn btn-default" (click)="requestLogin()">
+        <button
+          type="button"
+          class="btn btn-default"
+          [disabled]="disabledLogin()"
+          (click)="requestLogin()">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           Login
+        </button>
+      </div>
+      <div *ngIf="shouldShowMenu()" class="navbar-form navbar-left">
+        <button
+          type="button"
+          class="btn btn-default"
+          (click)="logout()">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          Logout
         </button>
       </div>
   </div>
