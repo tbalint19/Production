@@ -21,10 +21,12 @@ import { HttpClient } from './_httpclient/httpclient';
 import { AppComponent } from './app.component';
 import {
   NavBarComponent,
+  NavbarMenuComponent,
   SherwoodIntroComponent,
   DemoProposerComponent,
   SignupComponent,
   LoginComponent,
+  LogoComponent,
   SignupUsernameInputComponent,
   SignupEmailInputComponent,
   SignupPasswordInputComponent,
@@ -58,10 +60,12 @@ import {
     declarations: [
         AppComponent,
         NavBarComponent,
+        NavbarMenuComponent,
         SherwoodIntroComponent,
         DemoProposerComponent,
         SignupComponent,
         LoginComponent,
+        LogoComponent,
         SignupUsernameInputComponent,
         SignupEmailInputComponent,
         SignupPasswordInputComponent,
