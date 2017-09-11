@@ -10,11 +10,12 @@ import { SignupUser, DefaultResponse, CheckResponse, SignupStatus, Message } fro
 })
 export class SignupComponent{
 
-    public user: SignupUser = new SignupUser();
-    public status: SignupStatus = new SignupStatus();
-    public messages: Message[] = [];
+    public user: SignupUser;
+    public status: SignupStatus;
 
     constructor(private router: Router, private userService: UserService){
+        this.user = new SignupUser();
+        this.status = new SignupStatus
     }
 
 }

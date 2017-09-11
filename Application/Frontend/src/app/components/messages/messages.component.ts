@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Router } from '@angular/router';
+import { MessageService } from '../../_services/_index';
 import { Message } from '../../_models/_index';
 
 @Component({
@@ -10,13 +11,11 @@ import { Message } from '../../_models/_index';
 })
 export class MessagesComponent{
 
-    @Input() messages: Message[];
-
-    constructor(private router: Router){
+    constructor(private router: Router, private messages: MessageService){
     }
 
     getRelevant(){
-        return this.messages.filter((entry: Message) => entry.isRelevant);
+        return this.messages.getRelevant();
     }
 
 }

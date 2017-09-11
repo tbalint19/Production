@@ -14,12 +14,20 @@
           <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
         </div>
         <button
+          *ngIf="!status.pendingLogin"
           type="button"
-          class="btn btn-default"
+          class="btn btn-default login-btn"
           [disabled]="disabledLogin()"
           (click)="requestLogin()">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           Login
+        </button>
+        <button
+          *ngIf="status.pendingLogin"
+          type="button"
+          class="btn btn-default login-btn"
+          [disabled]="true">
+          <i class="material-icons md-15 loading-circle">data_usage</i>
         </button>
       </div>
       <div *ngIf="shouldShowMenu()" class="navbar-form navbar-left">

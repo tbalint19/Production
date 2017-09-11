@@ -34,7 +34,8 @@ import {
   HomeComponent
 } from './components/_index'
 import {
-    UserService
+    UserService,
+    MessageService
 } from './_services/_index';
 
 @NgModule({
@@ -71,7 +72,8 @@ import {
     providers: [
         AuthGuard,
         HttpClient,
-        UserService
+        UserService,
+        MessageService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
