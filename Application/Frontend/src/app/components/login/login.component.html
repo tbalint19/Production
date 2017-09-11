@@ -1,0 +1,30 @@
+<div class="form-group">
+  <input
+    type="text" class="form-control"
+    placeholder="Username or email" [(ngModel)]="user.identification">
+</div>
+
+<div class="form-group">
+  <input
+    type="password" class="form-control"
+    placeholder="Password" [(ngModel)]="user.password">
+</div>
+
+<button *ngIf="!status.pendingLogin"
+  type="button" class="btn btn-default login-btn"
+  [disabled]="disabledLogin()" (click)="requestLogin()">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+  Login
+</button>
+
+<button *ngIf="status.pendingLogin"
+  type="button" class="btn btn-default login-btn"
+  [disabled]="true">
+  <i class="material-icons md-15 loading-circle">data_usage</i>
+</button>
+
+<button
+  type="button" class="btn btn-default"
+  [disabled]="status.pendingLogin" (click)="requestLogin()">
+  <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+</button>

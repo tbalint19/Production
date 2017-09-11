@@ -1,4 +1,5 @@
 export * from './signup/signup.component';
+export * from './login/login.component';
 export * from './signup-username-input/signup-username-input.component';
 export * from './signup-email-input/signup-email-input.component';
 export * from './signup-password-input/signup-password-input.component';
