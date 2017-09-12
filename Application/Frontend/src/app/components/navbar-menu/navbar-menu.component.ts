@@ -12,6 +12,26 @@ export class NavbarMenuComponent{
     constructor(private router: Router){
     }
 
+    getResults(){
+        this.router.navigate(['/results']);
+    }
+
+    getCommunity(){
+        this.router.navigate(['/community']);
+    }
+
+    getProfile(){
+        this.router.navigate(['/profile']);
+    }
+
+    getAccount(){
+        this.router.navigate(['/account']);
+    }
+
+    getInfo(){
+        this.router.navigate(['/about']);
+    }
+
     logout(){
         localStorage.removeItem('auth-token');
         this.router.navigate(['/signup']);

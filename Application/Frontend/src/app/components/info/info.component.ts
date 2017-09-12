@@ -5,10 +5,10 @@ import { UserService, MessageService } from '../../_services/_index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css'],
+    templateUrl: 'info.component.html',
+    styleUrls: ['info.component.css'],
 })
-export class HomeComponent{
+export class InfoComponent{
 
     constructor(private router: Router, private userService: UserService, private messages: MessageService){
     }

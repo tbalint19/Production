@@ -20,6 +20,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from './_httpclient/httpclient';
 import { AppComponent } from './app.component';
 import {
+  AccountComponent,
+  ProfileComponent,
+  CommunityComponent,
+  InfoComponent,
+  ResultsComponent,
+  GameComponent,
   NavBarComponent,
   NavbarMenuComponent,
   SherwoodIntroComponent,
@@ -59,6 +65,12 @@ import {
     ],
     declarations: [
         AppComponent,
+        AccountComponent,
+        ProfileComponent,
+        CommunityComponent,
+        InfoComponent,
+        GameComponent,
+        ResultsComponent,
         NavBarComponent,
         NavbarMenuComponent,
         SherwoodIntroComponent,
