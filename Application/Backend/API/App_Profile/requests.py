@@ -65,3 +65,11 @@ class ConfirmRequest(CustomPostRequestForPublic):
             self.confirmation_code = json.loads(request.body.decode('utf-8'))["confirmationCode"]
         except:
             self.is_valid = False
+
+class UserRequest(CustomGetRequestForUser):
+    def __init__(self, request):
+        CustomGetRequestForUser.__init__(self, request)
+        try:
+            self.is_valid = True
+        except:
+            self.is_valid = False

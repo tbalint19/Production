@@ -40,3 +40,8 @@ def login_user(request):
 @API.endpoint(ConfirmRequest)
 def confirm_profile(request):
     return {'is_successful': request.user.profile.confirm_profile(request.confirmation_code)}
+
+
+@API.endpoint(UserRequest)
+def get_user(request):
+    return {'user': {'username': request.user.username, 'email': request.user.email}, 'profile': request.user.profile}

@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from token_service import TokenService
+import json
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def login():
 
 @app.route('/authenticate', methods=['POST'])
 def authenticate():
-    headers = request.get_json()['headers']
+    headers = request.get_json()
     if "HTTP_AUTH_TOKEN" not in headers:
         return jsonify({'user_id': None})
     token = headers["HTTP_AUTH_TOKEN"]

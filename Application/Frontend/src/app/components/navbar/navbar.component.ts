@@ -26,7 +26,7 @@ export class NavBarComponent {
     }
 
     shouldShowMenu(){
-        return !this.shouldShowLogin();
+        return !this.shouldShowLogin() && localStorage.getItem('full-user') != undefined;
     }
 
 }

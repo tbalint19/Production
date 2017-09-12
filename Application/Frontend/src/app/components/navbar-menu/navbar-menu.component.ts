@@ -34,6 +34,7 @@ export class NavbarMenuComponent{
 
     logout(){
         localStorage.removeItem('auth-token');
+        localStorage.removeItem('full-user');
         this.router.navigate(['/signup']);
     }
 

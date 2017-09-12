@@ -41,10 +41,11 @@ export class LoginComponent{
 
     handleLoginSuccess(token: string){
         localStorage.setItem('auth-token', token);
+        localStorage.removeItem('full-user');
         this.messages.add(new Message('success', 'Successful login', 'Welcome'))
         this.user = new LoginUser();
         this.status = new LoginStatus();
-        if (this.router.url == '/signup') { this.router.navigate(['/']) };
+        this.router.navigate(['/']);
     }
 
     handleLoginError(){

@@ -6,22 +6,22 @@ import {
   ProfileComponent,
   CommunityComponent,
   InfoComponent,
-  GameComponent,
+  StartComponent,
   ResultsComponent
 } from './components/_index'
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './_guards/_index';
+import { AuthGuard, UserGuard } from './_guards/_index';
 
 const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'demo', component: DemoComponent },
     { path: 'about', component: InfoComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
-    { path: 'results', component: ResultsComponent, canActivate: [AuthGuard] },
-    { path: 'community', component: CommunityComponent, canActivate: [AuthGuard] },
-    { path: 'game', component: GameComponent, canActivate: [AuthGuard] },
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'initialize', component: StartComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, UserGuard] },
+    { path: 'account', component: AccountComponent, canActivate: [AuthGuard, UserGuard] },
+    { path: 'results', component: ResultsComponent, canActivate: [AuthGuard, UserGuard] },
+    { path: 'community', component: CommunityComponent, canActivate: [AuthGuard, UserGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard, UserGuard] },
 
     { path: '**', redirectTo: '' }
 ];

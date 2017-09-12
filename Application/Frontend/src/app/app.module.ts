@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {routing} from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { AuthGuard } from './_guards/_index';
+import { AuthGuard, UserGuard } from './_guards/_index';
 import {
   DataTableModule,
   InputTextareaModule,
@@ -25,7 +25,7 @@ import {
   CommunityComponent,
   InfoComponent,
   ResultsComponent,
-  GameComponent,
+  StartComponent,
   NavBarComponent,
   NavbarMenuComponent,
   SherwoodIntroComponent,
@@ -69,7 +69,7 @@ import {
         ProfileComponent,
         CommunityComponent,
         InfoComponent,
-        GameComponent,
+        StartComponent,
         ResultsComponent,
         NavBarComponent,
         NavbarMenuComponent,
@@ -89,6 +89,7 @@ import {
     ],
     providers: [
         AuthGuard,
+        UserGuard,
         HttpClient,
         UserService,
         MessageService

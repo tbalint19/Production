@@ -13,4 +13,6 @@ urlpatterns = [
 
     url(r'^confirm$', views.confirm_profile, name='confirm_user'),
 
+    url(r'^user$', views.get_user, name='get_user'),
+
 ]

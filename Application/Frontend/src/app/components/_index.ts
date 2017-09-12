@@ -18,4 +18,4 @@ export * from './profile/profile.component';
 export * from './community/community.component';
 export * from './info/info.component';
 export * from './results/results.component';
-export * from './game/game.component';
+export * from './start/start.component';
