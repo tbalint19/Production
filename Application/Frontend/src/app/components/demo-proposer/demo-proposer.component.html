@@ -1,7 +1,10 @@
 <div class="demo-proposer-container">
   <div class="demo-proposer card">
     <span class="text">
-      Learn the basics before joining our community. Takes no more than 5 minutes.
+      Learn the basics before
+      <span *ngIf="!isLoggedIn()">joining our community.</span>
+      <span *ngIf="isLoggedIn()">anything else.</span>
+      Takes no more than 5 minutes.
     </span>
     <span>
       <button class="btn btn-default demo-button" (click)="getDemo()">

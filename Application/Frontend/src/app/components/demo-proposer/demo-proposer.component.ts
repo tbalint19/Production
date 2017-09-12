@@ -19,4 +19,8 @@ export class DemoProposerComponent{
         this.router.navigate(['demo']);
     }
 
+    isLoggedIn(){
+        return localStorage.getItem('auth-token') != undefined;
+    }
+
 }
