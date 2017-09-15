@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {routing} from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { AuthGuard, UserGuard } from './_guards/_index';
+import { AuthGuard, UserGuard, ConfirmGuard } from './_guards/_index';
 import {
   DataTableModule,
   InputTextareaModule,
@@ -40,6 +40,7 @@ import {
   SignupButtonComponent,
   MessagesComponent,
   DemoComponent,
+  ConfirmComponent,
   HomeComponent
 } from './components/_index'
 import {
@@ -85,6 +86,7 @@ import {
         SignupButtonComponent,
         MessagesComponent,
         DemoComponent,
+        ConfirmComponent,
         HomeComponent
     ],
     providers: [
@@ -92,6 +94,7 @@ import {
         UserGuard,
         HttpClient,
         UserService,
+        ConfirmGuard,
         MessageService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

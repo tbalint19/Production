@@ -24,7 +24,7 @@ def signup_user(request):
     profile = Profile.objects.create_profile(request.username, request.email, request.password, request.inviter)
     if profile is not None:
         controller = EmailController()
-        controller.send_confirm_email(profile.user_obj.username, profile.user_obj.email, profile.confirmation_code)
+        controller.send_confirm_email(profile.user_obj.username, profile.user_obj.email, profile.confirmation.code)
     return {'is_successful': profile is not None}
 
 
@@ -44,4 +44,9 @@ def confirm_profile(request):
 
 @API.endpoint(UserRequest)
 def get_user(request):
-    return {'user': {'username': request.user.username, 'email': request.user.email}, 'profile': request.user.profile}
+    return {
+        'user': request.user.profile.get_user_data(),
+        'profile': request.user.profile,
+        'account': None,
+        'is_confirmed': request.user.profile.confirmation.is_confirmed
+    }

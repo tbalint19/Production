@@ -58,9 +58,10 @@ class LoginRequest(CustomPostRequestForPublic):
         except:
             self.is_valid = False
 
-class ConfirmRequest(CustomPostRequestForPublic):
+class ConfirmRequest(CustomPostRequestForUser):
     def __init__(self, request):
         CustomPostRequestForPublic.__init__(self, request)
+        self.meta["confirm_exception"] = True
         try:
             self.confirmation_code = json.loads(request.body.decode('utf-8'))["confirmationCode"]
         except:
@@ -69,6 +70,7 @@ class ConfirmRequest(CustomPostRequestForPublic):
 class UserRequest(CustomGetRequestForUser):
     def __init__(self, request):
         CustomGetRequestForUser.__init__(self, request)
+        self.meta["confirm_exception"] = True
         try:
             self.is_valid = True
         except:

@@ -19,3 +19,4 @@ export * from './community/community.component';
 export * from './info/info.component';
 export * from './results/results.component';
 export * from './start/start.component';
+export * from './confirm/confirm.component';

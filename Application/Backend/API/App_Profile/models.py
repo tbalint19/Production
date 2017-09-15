@@ -32,11 +32,11 @@ class ProfileManager(models.Manager):
     def create_profile(self, username, email, password, inviter):
         user = User.objects.create_user(username=username.lower(), email=email.lower(), password=password)
         profile = Profile(user_obj=user)
-        profile.confirmation_code = ProfileManager.generate_confirmation_code()
         inviter_obj = self.get_profile_or_none_by_username(inviter)
         if inviter_obj:
             profile.inviter = inviter_obj
         profile.save()
+        Confirmation.objects.create_confirmation(profile)
         return profile
 
     def authenticate_user(self, identification, password):
@@ -46,10 +46,6 @@ class ProfileManager(models.Manager):
                 return profile
         return None
 
-    @staticmethod
-    def generate_confirmation_code():
-        confirmation_code = ''.join(random.sample(string.ascii_uppercase + string.digits, k=20))
-        return confirmation_code
 
 class Profile(models.Model):
 
@@ -57,15 +53,45 @@ class Profile(models.Model):
     rank = models.CharField(max_length=20, default="newbie")
     annual_points = models.IntegerField(default=0)
     monthly_points = models.IntegerField(default=0)
-    is_confirmed = models.BooleanField(default=False)
-    confirmation_code = models.CharField(max_length=25, default=None, blank=True, null=True)
     inviter = models.ForeignKey('self', null=True, default=None, blank=True)
 
     objects = ProfileManager()
 
     def confirm_profile(self, confirmation_code):
-        if self.confirmation_code != confirmation_code:
+        if self.confirmation.code != confirmation_code:
             return False
-        self.is_confirmed = True
+        self.confirmation.is_confirmed = True
         self.save()
         return True
+
+    def get_user_data(self):
+        return {'username': self.user_obj.username, 'email': self.user_obj.email}
+
+class ConfirmationManager(models.Manager):
+
+    @staticmethod
+    def generate_confirmation_code():
+        confirmation_code = ''.join(random.sample(string.ascii_uppercase + string.digits, k=20))
+        return confirmation_code
+
+    def create_confirmation(self, profile):
+        code = ConfirmationManager.generate_confirmation_code()
+        confirmation = Confirmation(profile_obj=profile, code=code)
+        confirmation.save()
+        return confirmation
+
+class Confirmation(models.Model):
+
+    profile_obj = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    code = models.CharField(max_length=25)
+    is_confirmed = models.BooleanField(default=False)
+
+    objects = ConfirmationManager()
+
+
+class Reset(models.Model):
+
+    profile_obj = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    code = models.CharField(max_length=50)
+    created = models.DateTimeField()
+    is_used = models.BooleanField(default=False)
