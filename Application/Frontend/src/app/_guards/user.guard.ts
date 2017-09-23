@@ -10,9 +10,12 @@ export class UserGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (localStorage.getItem('full-user')){
             return true;
-        } else {
-            this.router.navigate(['initialize']);
-            return false;
         }
+        if (route.queryParams['code']) {
+            this.router.navigate(["initialize"], { queryParams: { code: route.queryParams['code'] } });
+        } else {
+            this.router.navigate(["initialize"]);
+        }
+        return false;
     }
 }

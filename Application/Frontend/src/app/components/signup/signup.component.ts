@@ -13,9 +13,11 @@ export class SignupComponent{
     public user: SignupUser;
     public status: SignupStatus;
 
-    constructor(private router: Router, private userService: UserService){
+    constructor(
+        private router: Router,
+        private userService: UserService){
         this.user = new SignupUser();
-        this.status = new SignupStatus
+        this.status = new SignupStatus();
     }
 
 }

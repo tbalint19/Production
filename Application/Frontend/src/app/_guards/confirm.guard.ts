@@ -10,9 +10,12 @@ export class ConfirmGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (JSON.parse(localStorage.getItem('full-user'))["is_confirmed"]){
             return true;
-        } else {
-            this.router.navigate(['confirm']);
-            return false;
         }
+        if (route.queryParams['code']) {
+            this.router.navigate(["confirm"], { queryParams: { code: route.queryParams['code'] } });
+        } else {
+            this.router.navigate(["confirm"]);
+        }
+        return false;
     }
 }
