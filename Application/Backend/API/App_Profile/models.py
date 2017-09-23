@@ -32,10 +32,8 @@ class ProfileManager(models.Manager):
     def create_profile(self, username, email, password, inviter):
         user = User.objects.create_user(username=username.lower(), email=email.lower(), password=password)
         profile = Profile(user_obj=user)
-        inviter_obj = self.get_profile_or_none_by_username(inviter)
-        if inviter_obj:
-            profile.inviter = inviter_obj
         profile.save()
+        Invitation.objects.create_inivtation_if_possible(profile, inviter)
         Confirmation.objects.create_confirmation(profile)
         return profile
 
@@ -53,7 +51,6 @@ class Profile(models.Model):
     rank = models.CharField(max_length=20, default="newbie")
     annual_points = models.IntegerField(default=0)
     monthly_points = models.IntegerField(default=0)
-    inviter = models.ForeignKey('self', null=True, default=None, blank=True)
 
     objects = ProfileManager()
 
@@ -95,3 +92,21 @@ class Reset(models.Model):
     code = models.CharField(max_length=50)
     created = models.DateTimeField()
     is_used = models.BooleanField(default=False)
+
+
+class InvitationManager(models.Model):
+
+    def create_inivtation_if_possible(self, invited, inviter):
+        inviter_obj = Profile.objects.get_profile_or_none_by_username(inviter)
+        if inviter_obj:
+            invitation = Invitation(inviter=inviter_obj, invited=invited)
+            invitation.save()
+            return invitation
+        return None
+
+class Invitation(models.Model):
+
+    inviter = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="inviter")
+    invited = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="invited")
+
+    objects = InvitationManager()
