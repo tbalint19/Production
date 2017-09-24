@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^api/account/', include('App_Account.urls')),
     url(r'^api/schedule/', include('App_Schedule.urls')),
     url(r'^api/race/', include('App_Race.urls')),
+    url(r'^api/racegame/', include('App_RaceGame.urls')),
 ]
