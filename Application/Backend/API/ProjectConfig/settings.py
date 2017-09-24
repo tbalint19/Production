@@ -20,7 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'App_Profile.AppProfileConfig',
-    'App_Account.AppAccountConfig'
+    'App_Account.AppAccountConfig',
+    'App_Schedule.AppScheduleConfig',
+    'App_Race.AppRaceConfig'
 ]
 
 MIDDLEWARE = [
