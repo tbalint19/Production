@@ -23,7 +23,8 @@ INSTALLED_APPS = [
     'App_Account.AppAccountConfig',
     'App_Schedule.AppScheduleConfig',
     'App_Race.AppRaceConfig',
-    'App_RaceGame.AppRacegameConfig'
+    'App_RaceGame.AppRacegameConfig',
+    'App_Championship.AppChampionshipConfig'
 ]
 
 MIDDLEWARE = [
