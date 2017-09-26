@@ -45,5 +45,5 @@ class Serializer:
         if type(value).__name__ == 'datetime':
             value = getattr(obj, field.name).isoformat()
         if self.obj_extension in field.name:
-            value = str(getattr(obj, field.name))
+            value = getattr(obj, field.name).id
         return value
