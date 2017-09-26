@@ -3,7 +3,7 @@ from App_Schedule.models import *
 from django.contrib.auth.models import User
 
 
-class League(models.Model):
+class Series(models.Model):
 
     name = models.CharField(max_length=30)
     is_private = models.BooleanField(default=False)
@@ -11,14 +11,14 @@ class League(models.Model):
 
 class Championship(models.Model):
 
-    league_obj = models.ForeignKey(League, on_delete=models.CASCADE)
+    league_obj = models.ForeignKey(Series, on_delete=models.CASCADE)
     season = models.IntegerField()
 
 
 class Racer(models.Model):
 
     user_obj = models.ForeignKey(User, on_delete=models.CASCADE)
-    league_obj = models.ForeignKey(League, on_delete=models.CASCADE)
+    league_obj = models.ForeignKey(Series, on_delete=models.CASCADE)
 
 
 class GrandPrix(models.Model):
