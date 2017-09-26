@@ -14,6 +14,12 @@ class Friendship(models.Model):
     is_requester = models.BooleanField()
 
 
+class Organization(models.Model):
+
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=150)
+
+
 class DefaultTweet(models.Model):
 
     profile_obj = models.ForeignKey(Profile, on_delete=models.CASCADE)

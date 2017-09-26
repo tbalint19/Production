@@ -1,5 +1,6 @@
 from django.db import models
 from App_Schedule.models import *
+from django.contrib.auth.models import User
 
 
 class League(models.Model):
@@ -12,6 +13,12 @@ class Championship(models.Model):
 
     league_obj = models.ForeignKey(League, on_delete=models.CASCADE)
     season = models.IntegerField()
+
+
+class Racer(models.Model):
+
+    user_obj = models.ForeignKey(User, on_delete=models.CASCADE)
+    league_obj = models.ForeignKey(League, on_delete=models.CASCADE)
 
 
 class GrandPrix(models.Model):
