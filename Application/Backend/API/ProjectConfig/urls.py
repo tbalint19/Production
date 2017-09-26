@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^api/racegame/', include('App_RaceGame.urls')),
     url(r'^api/chamionship/', include('App_Championship.urls')),
     url(r'^api/chamionshipgame/', include('App_ChampionshipGame.urls')),
+    url(r'^api/wall/', include('App_ChampionshipGame.urls')),
 ]
