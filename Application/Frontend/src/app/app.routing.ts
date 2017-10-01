@@ -6,7 +6,7 @@ import {
   ProfileComponent,
   CommunityComponent,
   InfoComponent,
-  StartComponent,
+  InitComponent,
   ConfirmComponent,
   ResultsComponent
 } from './components/_index'
@@ -17,7 +17,7 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'demo', component: DemoComponent },
     { path: 'about', component: InfoComponent },
-    { path: 'initialize', component: StartComponent, canActivate: [AuthGuard] },
+    { path: 'initialize', component: InitComponent, canActivate: [AuthGuard] },
     { path: 'confirm', component: ConfirmComponent, canActivate: [AuthGuard, UserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, UserGuard, ConfirmGuard] },
     { path: 'results', component: ResultsComponent, canActivate: [AuthGuard, UserGuard, ConfirmGuard] },

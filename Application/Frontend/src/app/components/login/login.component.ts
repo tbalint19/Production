@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService, MessageService } from '../../_services/_index'
 import { LoginUser, TokenResponse, LoginStatus, Message } from '../../_models/_index';
@@ -9,11 +9,10 @@ import { LoginUser, TokenResponse, LoginStatus, Message } from '../../_models/_i
     styleUrls: ['login.component.css'],
     selector: 'login'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
     public user: LoginUser;
     public status: LoginStatus;
-    public confirmationCode: string;
 
     constructor(
         private router: Router,
@@ -22,12 +21,6 @@ export class LoginComponent implements OnInit {
         private messages: MessageService){
         this.user = new LoginUser();
         this.status = new LoginStatus();
-    }
-
-    ngOnInit(){
-        this.route.queryParams.subscribe((params: Params) => {
-            this.confirmationCode = params['code'];
-        })
     }
 
     disabledLogin(){
@@ -56,11 +49,7 @@ export class LoginComponent implements OnInit {
         this.messages.add(new Message('success', 'Successful login', 'Welcome'))
         this.user = new LoginUser();
         this.status = new LoginStatus();
-        if (this.confirmationCode) {
-            this.router.navigate([""], { queryParams: { code: this.confirmationCode } });
-        } else {
-            this.router.navigate([""]);
-        }
+        this.router.navigate([""]);
     }
 
     handleLoginError(){

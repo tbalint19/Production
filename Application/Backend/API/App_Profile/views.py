@@ -45,7 +45,7 @@ def confirm_profile(request):
 @API.endpoint(UserRequest)
 def get_user(request):
     return {
-        'user': request.user.profile.get_user_data(),
+        'user': request.user.profile._user(),
         'profile': request.user.profile,
         'account': None,
         'is_confirmed': request.user.profile.confirmation.is_confirmed

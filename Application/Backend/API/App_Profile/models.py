@@ -1,3 +1,4 @@
+from App_Account.models import Account
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.db import models
@@ -33,7 +34,8 @@ class ProfileManager(models.Manager):
         user = User.objects.create_user(username=username.lower(), email=email.lower(), password=password)
         profile = Profile(user_obj=user)
         profile.save()
-        Invitation.objects.create_inivtation_if_possible(profile, inviter)
+        Account(user_obj=user).save()
+        Invitation.objects.create_invitation_if_possible(profile, inviter)
         Confirmation.objects.create_confirmation(profile)
         return profile
 
@@ -61,8 +63,9 @@ class Profile(models.Model):
         self.save()
         return True
 
-    def get_user_data(self):
+    def _user(self):
         return {'username': self.user_obj.username, 'email': self.user_obj.email}
+
 
 class ConfirmationManager(models.Manager):
 
@@ -94,9 +97,9 @@ class Reset(models.Model):
     is_used = models.BooleanField(default=False)
 
 
-class InvitationManager(models.Model):
+class InvitationManager(models.Manager):
 
-    def create_inivtation_if_possible(self, invited, inviter):
+    def create_invitation_if_possible(self, invited, inviter):
         inviter_obj = Profile.objects.get_profile_or_none_by_username(inviter)
         if inviter_obj:
             invitation = Invitation(inviter=inviter_obj, invited=invited)

@@ -32,12 +32,10 @@ export class ConfirmComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.activatedRoute.queryParams.subscribe((params: Params) => {
-            if (params['code']) {
-                this.request.confirmationCode = params['code'];
-                this.confirm();
-            }
-        })
+        if (sessionStorage.getItem('confirmationCode')) {
+            this.request.confirmationCode = sessionStorage.getItem('confirmationCode');
+            this.confirm();
+        }
     }
 
 }
