@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.post('/confirmation', (req, res) => {
   var data = req.body;
   var options = { to: data['to'], subject: "Email confirm", name: data['name'], link: data['link'] }
-  // app.mailer.send('confirm', options, (error) => logStatus(options, error));
+  app.mailer.send('confirm', options, (error) => logStatus(options, error));
   res.type('application/json');
   res.send({attempted: true});
 });

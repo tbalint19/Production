@@ -6,7 +6,7 @@ class EmailController(MicroserviceController):
 
     def send_confirm_email(self, username, email, confirmation_code):
         path = "/confirmation"
-        link = 'localhost:8000?confirmation_code=' + confirmation_code
+        link = 'localhost:8000/confirm?confirmation_code=' + confirmation_code
         data = {'to': email, 'name': username, 'link': link}
         response = self.post(path, data)
         is_attempted = response['attempted']

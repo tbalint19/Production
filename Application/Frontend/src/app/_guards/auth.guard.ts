@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
             return true;
         }
         if (route.queryParams['code']) {
-            sessionStorage.setItem('confirmation_code', route.queryParams['code']);
+            sessionStorage.setItem('confirmationCode', route.queryParams['code']);
         }
         this.router.navigate(["signup"]);
         return false;

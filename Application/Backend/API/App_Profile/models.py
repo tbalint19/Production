@@ -60,7 +60,7 @@ class Profile(models.Model):
         if self.confirmation.code != confirmation_code:
             return False
         self.confirmation.is_confirmed = True
-        self.save()
+        self.confirmation.save()
         return True
 
     def _user(self):
