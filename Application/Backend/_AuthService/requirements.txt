@@ -9,4 +9,4 @@ pyasn1==0.3.3
 pycparser==2.18
 PyJWT==1.5.2
 six==1.10.0
-Werkzeug==0.12.2
+Werkzeug==0.15.3
