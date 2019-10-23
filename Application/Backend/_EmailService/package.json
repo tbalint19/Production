@@ -16,7 +16,7 @@
     "handlebars": "^4.0.10",
     "jade": "^1.11.0",
     "mongodb": "^2.2.31",
-    "mongoose": "^4.11.9",
+    "mongoose": "^5.7.6",
     "mustache": "^2.3.0",
     "pg": "^6.1.0"
   }
